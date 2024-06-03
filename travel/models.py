@@ -23,7 +23,12 @@ class Destination(db.Model):
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
-    currency = db.Column(db.String(3))
+    date = db.Column(db.Date)  
+    time = db.Column(db.Time)
+    venue = db.Column(db.String(100))
+    ticket_price = db.Column(db.String(20))
+    ticket_quantity = db.Column(db.Integer)
+    status = db.Column(db.String(20))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='destination')

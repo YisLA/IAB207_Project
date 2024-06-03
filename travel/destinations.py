@@ -22,21 +22,27 @@ def show(id):
 @destbp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
-  print('Method type: ', request.method)
-  form = DestinationForm()
-  if form.validate_on_submit():
-    # call the function that checks and returns image
-    db_file_path = check_upload_file(form)
-    destination = Destination(name=form.name.data,description=form.description.data, 
-    image=db_file_path,currency=form.currency.data)
-    # add the object to the db session
-    db.session.add(destination)
-    # commit to the database
-    db.session.commit()
-    flash('Successfully created new travel destination', 'success')
-    # Always end with redirect when form is valid
-    return redirect(url_for('destination.create'))
-  return render_template('destinations/create.html', form=form)
+    print('Method type: ', request.method)
+    form = DestinationForm()
+    if form.validate_on_submit():
+        image_path = check_upload_file(form)
+        
+        destination = Destination(
+            name=form.name.data,
+            description=form.description.data,
+            image=image_path,
+            date=form.date.data,
+            time=form.time.data,
+            venue=form.venue.data,
+            ticket_price=form.ticket_price.data,
+            ticket_quantity=form.ticket_quantity.data,
+            status=form.status.data
+        )
+        db.session.add(destination)
+        db.session.commit()
+        flash('Successfully created new travel destination', 'success')
+        return redirect(url_for('destination.show', id=destination.id))
+    return render_template('destinations/create.html', form=form)
 
 def check_upload_file(form):
   # get file data from form  

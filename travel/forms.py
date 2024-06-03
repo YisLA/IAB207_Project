@@ -9,15 +9,16 @@ ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 class DestinationForm(FlaskForm):
     name = StringField('Title', validators=[InputRequired()])
     image = FileField('Event Image', validators=[
-    FileRequired(message='Image cannot be empty'),
-    FileAllowed(ALLOWED_FILE, message='Only supports PNG, JPG, png, jpg')])
+        FileRequired(message='Image cannot be empty'),
+        FileAllowed(ALLOWED_FILE, message='Only supports PNG, JPG, png, jpg')
+    ])
     description = TextAreaField('Description', validators=[InputRequired()])
     date = DateField('Date', validators=[InputRequired()])
     time = TimeField('Time', validators=[InputRequired()])
-    Venue = StringField('Location', validators=[InputRequired()]) 
-    ticketPrice = StringField('Ticket Price', validators=[InputRequired()])
-    ticketQuantity = StringField('Ticket Quantity', validators=[InputRequired()])
-    status_list = ['Open', 'SoldOut', 'Inactive', 'Cancelled'] 
+    venue = StringField('Venue', validators=[InputRequired()])
+    ticket_price = StringField('Ticket Price', validators=[InputRequired()])
+    ticket_quantity = StringField('Ticket Quantity', validators=[InputRequired()])
+    status_list = ['Open', 'SoldOut', 'Inactive', 'Cancelled']
     status = SelectField('Status', choices=status_list, default=1)
     submit = SubmitField('Create Event')
     
