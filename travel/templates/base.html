@@ -24,7 +24,8 @@
                         <!-- Register/Login/Logout and welcome -->
                         {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link disabled text-muted" href="#">Welcome {{ current_user.name }}</a>
+                            <!-- Debug: Ensure the authentication check is working -->
+                            <a class="nav-link" href="#" style="color: white;">Welcome {{ current_user.name }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a>
@@ -47,6 +48,7 @@
                 </div>
             </div>
         </nav>
+        
         <!-- Flash messages -->
         {% with messages = get_flashed_messages() %}
         {% if messages %}
