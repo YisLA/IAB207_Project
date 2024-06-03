@@ -8,16 +8,9 @@
     <div class="row mt-5 mb-3">  
       <div class="col-md-12">  
         <div class="float-left">  
-          <h1 class="mb-0">{{ destination.name }}</h1>  
-          <p>Popular Destination</p>  
+          <h1 class="mb-0 text-center text-white">{{ destination.name }}</h1> 
+          <h2 class="mb-0 text-center text-white">Popular sporting event</h2>    
         </div>  
- 
-        <div class="float-right text-right">  
-          <p class="mb-0">1 AUD equals</p>  
-          <h2 id="exchange-rate">0.62 {{ destination.currency }}</h1>  
-        </div>  
-      </div>  
-    </div>  
  
     <!-- Destination --> 
     <div class="row">  
@@ -27,9 +20,11 @@
             <div class="media">  
               <img class="align-self-start mr-3" src="{{ destination.image }}">  
               <div class="media-body">  
-                <small class="font-weight-bold text-muted">Stay 2 nights</small>  
-                <h5 class="mt-0">{{ destination.name }}</h5>  
-                <p>{{ destination.description }}</p>  
+                <h4 class="mt-0 display-4 text-center">{{ destination.name }}</h4>  
+                <h4 class="mt-0 display-4 text-center">{{ destination.description }}</h4>  
+                <p>{{ destination.venue }}</p>    
+                <p>{{ destination.date }}</p> 
+                <p>{{ destination.time }}</p>
                 <a href="#" class="btn btn-danger">Book Now</a>  
               </div>  
             </div>  
