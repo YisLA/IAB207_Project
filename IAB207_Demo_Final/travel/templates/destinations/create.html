@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+
+
+<div style="font-size: 70px; color: white;" class="stylish-text">
+  <p>Create Your Own Event</p>
+  <div style="font-size: 18px; font-family: Georgia, 'Times New Roman', Times, serif;">
+      <p>Unleash Your Creativity, Build Your Dream Event</p>
+        {{ render_form(form) }}
+    </div>
+</div>
+
+<div style="padding: 30px;"></div>
+
+
+{% endblock %}
