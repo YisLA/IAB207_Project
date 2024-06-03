@@ -8,7 +8,7 @@ ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 #Create new destination
 class DestinationForm(FlaskForm):
     name = StringField('Title', validators=[InputRequired()])
-    image = FileField('Event Image', validators=[
+    images = FileField('Event Image', validators=[
         FileRequired(message='Image cannot be empty'),
         FileAllowed(ALLOWED_FILE, message='Only supports PNG, JPG, png, jpg')
     ])
