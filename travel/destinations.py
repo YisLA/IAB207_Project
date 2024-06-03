@@ -44,19 +44,31 @@ def create():
         return redirect(url_for('destination.show', id=destination.id))
     return render_template('destinations/create.html', form=form)
 
+
 def check_upload_file(form):
-  # get file data from form  
-  fp = form.image.data
-  filename = fp.filename
-  # get the current path of the module file… store image file relative to this path  
-  BASE_PATH = os.path.dirname(__file__)
-  # upload file location – directory of this file/static/image
-  upload_path = os.path.join(BASE_PATH, 'static/image', secure_filename(filename))
-  # store relative path in DB as image location in HTML is relative
-  db_upload_path = '/static/image/' + secure_filename(filename)
-  # save the file and return the db upload path
-  fp.save(upload_path)
-  return db_upload_path
+    # get file data from form  
+    fp = form.images.data
+    filename = secure_filename(fp.filename)
+    
+    # get the current path of the module file… store image file relative to this path  
+    BASE_PATH = os.path.dirname(__file__)
+    
+    # upload file location – directory of this file/static/image
+    upload_dir = os.path.join(BASE_PATH, 'static', 'images')
+    
+    # create the directory if it doesn't exist
+    if not os.path.exists(upload_dir):
+        os.makedirs(upload_dir)
+
+    # upload path
+    upload_path = os.path.join(upload_dir, filename)
+    
+    # store relative path in DB as image location in HTML is relative
+    db_upload_path = '/static/images/' + filename
+    
+    # save the file and return the db upload path
+    fp.save(upload_path)
+    return db_upload_path
 
 @destbp.route('/<id>/comment', methods=['GET', 'POST'])  
 @login_required
