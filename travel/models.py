@@ -49,3 +49,14 @@ class Comment(db.Model):
     # string print method
     def __repr__(self):
         return f"Comment: {self.text}"
+
+class Booking(db.Model):
+    __tablename__ = 'bookings'
+    id=db.Column(db.Integer, primary_key=True, unique=True)
+    orderid=db.Column(db.Integer, unique=True)
+    userid =db.Column(db.String(100), db.ForeignKey('users.id'))
+    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+
+    # string print method
+    def __repr__(self):
+        return f"Booking: {self.text}"
