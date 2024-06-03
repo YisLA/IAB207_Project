@@ -53,19 +53,21 @@
                 <p>All Events</p>
             </div>
             <!-- Event Cards -->
+            {% for destination in destinations %}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ url_for('static', filename='images/basketball_card.jpeg') }}" class="card-img-top" alt="...">
+                    <img src="{{ destination.image }}" class="card-img-top" alt="{{ destination.name }}">
                     <div class="card-body text-black">
-                        <span class="badge bg-success text-white rounded-pill">Open</span>
-                        <h5 class="card-title">HoopsFest: Slam Dunk Spectacular</h5>
-                        <p class="card-text">Brisbane Convention & Exhibition Centre, May 15, 2024, 7:00 PM</p>
-                        <a href="{{ url_for('main.event_details') }}" class="btn btn-primary">Event Details</a>
+                        <span class="badge bg-success text-white rounded-pill">{{ destination.status }}</span>
+                        <h5 class="card-title">{{ destination.name }}</h5>
+                        <p class="card-text">{{ destination.description }}</p>
+                        <a href="{{ url_for('destination.show', id=destination.id) }}" class="btn btn-primary">Event Details</a>
                     </div>
                 </div>
             </div>
-            <!-- More Event Cards... -->
+            {% endfor %}
         </div>
     </div>
 </main>
 {% endblock %}
+
