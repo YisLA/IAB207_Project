@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="stylesheets/User_booking.css" rel="stylesheet">
+
+    <title>Game Glory</title>
+    <style>
+      body {
+        background: url('https://png.pngtree.com/thumb_back/fh260/background/20240103/pngtree-assorted-grunge-patterns-on-vintage-tickets-image_13922333.png') no-repeat center center fixed;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      {% block navbar %}{% endblock %}
+    </header>
+    
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                  <div style=" font-size: 100px; color: white; font-family: 'Brush Script MT', cursive;" class="container1 ">
+                    <p>My Bookings</p>
+                  </div>
+            </div>
+            <div class="row">
+              <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light">
+                  <tr>
+                    <th>Event</th>
+                    <th>Event Name</th>
+                    <th>Status</th>
+                    <th> Time</th>
+                    <th>Date</th>
+                    <th>Booking id</th>
+                    <th>Number of Tickets</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                            src="static/images/basketball_card.jpeg"
+                            alt=""
+                            style="width: 80px; height: 110px"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">HoopsFest: Slam Dunk Spectacular</p>
+                      <p class="text-muted mb-0">Basketball</p>
+                    </td>
+                    <td>
+                      <span  style="background-color: green; color: white;" class="badge badge-success rounded-pill d-inline">Open</span>
+                    </td>
+                    <td>19:36 PM</td>
+                    <td>
+                      May 10, 2024
+                    </td>
+                    <td>#XYZ1234</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                            src="static/images/football_card.jpeg"
+                            alt=""
+                            style="width: 80px; height: 110px"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">FootFrenzy: The Ultimate Football Showdown</p>
+                      <p class="text-muted mb-0">Football</p>
+                    </td>
+                    <td>
+                      <span  style="background-color: green; color: white;"  class="badge badge-primary rounded-pill d-inline">Open</span>
+                    </td>
+                    <td>21:47 PM</td>
+                    <td>
+                       June 5, 2024
+                    </td>
+                    <td>#QRS3690</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                            src="static/images/swimming_card.jpeg"
+                            alt=""
+                            style="width: 90px; height: 110px"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">Aquatic Quest: The Swim Challenge</p>
+                      <p class="text-muted mb-0">Swimming</p>
+                    </td>
+                    <td>
+                      <span style="background-color: green; color: white;"  class="badge badge-warning rounded-pill d-inline">Open</span>
+                    </td>
+                    <td>9:16 AM</td>
+                    <td>
+                      May 3, 2024
+                    </td>
+                    <td>#KLM7812</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img
+                            src="static/images/cricket_card.jpeg"
+                            alt=""
+                            style="width: 90px; height: 110px"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">Boundary Blitz: Cricket Clash Extravaganza</p>
+                      <p class="text-muted mb-0">Cricket</p>
+                    </td>
+                    <td>
+                      <span style="background-color: green; color: white;" class="badge badge-warning rounded-pill d-inline">Open</span>
+                    </td>
+                    <td>12:53 PM</td>
+                    <td>
+                      Apr 21, 2024
+                    </td>
+                    <td>#BDG2457</td>
+                    <td>8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row">
+              <div class="pagination-container">
+                <div style="padding: 20px; padding-left: 550px;;" class="pag">
+                    <nav aria-label="Page navigation example">
+                        <ul  class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li style="color: black;" class="page-item"><a class="page-link" href="User_Booking_history.html">1</a></li>
+                            <li class="page-item"><a class="page-link" href="User_Booking2.html">2</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+    
+  </body>
+</html>
+{% endblock %}
