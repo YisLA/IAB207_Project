@@ -17,25 +17,31 @@
       <div class="col-md-12">  
         <div class="card my-3">  
           <div class="card-body">  
-            <div class="media">  
-              <img class="align-self-start mr-3" src="{{ destination.image }}">  
-              <div class="media-body">  
-                <h4 class="mt-0 display-4 text-center">{{ destination.name }}</h4>  
-                <h4 class="mt-0 display-4 text-center">{{ destination.description }}</h4>  
-                <p>{{ destination.venue }}</p>    
-                <p>{{ destination.date }}</p> 
-                <p>{{ destination.time }}</p>
-                <a href="#" class="btn btn-danger">Book Now</a>  
-              </div>  
-            </div>  
+            <div class="d-flex flex-column align-items-center">  
+              <img class="mb-3" src="{{ destination.image }}" alt="{{ destination.name }}">  
+            </div>
+            <div class="text-left">
+              <h4 class="display-4" style="font-family: 'Georgia', 'Times New Roman', Times, serif;">Description: {{ destination.description }}</h4>
+              <h4 class="display-4">Venue: {{ destination.venue }}</h4>  
+              <h4 class="display-4">Date: {{ destination.date }}</h4>  
+              <h4 class="display-4">Time: {{ destination.time }}</h4>    
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#" class="btn btn-danger btn-lg">Book Now</a>  
+            </div>
           </div>  
         </div>  
       </div>  
     </div>
     <hr>
+    
+    
+
+    
+    
     <!-- Comments -->  
     <div class="row">  
-      <div class="col-md-12">  
+      <div class="col-md-12 text-white">  
         <h2>Comments</h1>  
       </div>  
     </div>  
