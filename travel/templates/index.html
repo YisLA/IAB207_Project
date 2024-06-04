@@ -54,17 +54,83 @@
             </div>
             <!-- Event Cards -->
             {% for destination in destinations %}
+            <style>
+                .card-custom {
+                    border: none;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+                    color: #e0e0e0;
+                }
+                .card-custom:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+                }
+                .card-custom img {
+                    border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;
+                    height: 200px;
+                    object-fit: cover;
+                    filter: brightness(0.8);
+                }
+                .card-custom .card-body {
+                    padding: 1.5rem;
+                    position: relative;
+                }
+                .card-custom .badge {
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
+                    padding: 0.5rem 1rem;
+                    font-size: 0.9rem;
+                    background: #28a745;
+                    color: #fff;
+                    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                }
+                .card-custom .card-title {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-top: 2rem; /* Added margin top to separate from badge */
+                }
+                .card-custom .card-text {
+                    color: #b0b0b0;
+                    font-size: 1rem;
+                    margin-bottom: 1rem; /* Adjusted margin bottom */
+                    max-height: 100px; /* Added max height for overflow */
+                    overflow: hidden;
+                }
+                .card-custom .btn {
+                    border-radius: 30px;
+                    padding: 0.5rem 1.5rem;
+                    font-size: 1rem;
+                    background: linear-gradient(145deg, #007bff, #0056b3);
+                    border: none;
+                    transition: background 0.3s, transform 0.3s;
+                    margin-top: 1rem; /* Added margin top to separate from text */
+                }
+                .card-custom .btn:hover {
+                    background: linear-gradient(145deg, #0056b3, #007bff);
+                    transform: scale(1.05);
+                }
+            </style>
+            
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                <div class="card" style="width: 18rem;">
+                <div class="card card-custom">
                     <img src="{{ destination.image }}" class="card-img-top" alt="{{ destination.name }}">
                     <div class="card-body text-black">
-                        <span class="badge bg-success text-white rounded-pill">{{ destination.status }}</span>
+                        <span class="badge rounded-pill">{{ destination.status }}</span>
                         <h5 class="card-title">{{ destination.name }}</h5>
                         <p class="card-text">{{ destination.description }}</p>
                         <a href="{{ url_for('destination.show', id=destination.id) }}" class="btn btn-primary">Event Details</a>
                     </div>
                 </div>
             </div>
+            
+            
             {% endfor %}
         </div>
     </div>
