@@ -31,3 +31,4 @@ def search():
         return render_template('index.html', destinations=destinations)
     else:
         return redirect(url_for('main.index'))
+    
