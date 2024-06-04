@@ -3,15 +3,70 @@
 {% from 'bootstrap5/form.html' import render_form %}
 
 {% block content %}
-
-<div class="container">
-<div class="page-header">
-    <h4>{{heading}}</h4>
+<div class="container mt-5">
+  <div class="page-header text-center mb-4">
+    <h4 class="text-danger">{{ heading }}</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <img src="{{ url_for('static', filename='images/login.jpeg') }}" class="img-fluid rounded" alt="Descriptive Alt Text">
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          {{ render_form(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Form rendering is simple and easy if using bootstrap -->
-<div class="col-md-6 ml-5">
-  {{render_form(form)}}
-</div>
+<style>
+  body {
+    background-color: #f8f9fa; /* Light grey background */
+  }
 
+  .page-header {
+    margin-bottom: 20px;
+  }
+
+  .page-header h4 {
+    padding-left: 100px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    color: #ff0000; /* Red color */
+  }
+
+  .card {
+    border: none; /* Remove default card border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .form-control {
+    border-radius: 5px; /* Rounded corners for form inputs */
+    border: 1px solid #ced4da; /* Light grey border */
+  }
+
+  .btn-primary {
+    background-color: #000000; /* Black color */
+    border-color: #000000; /* Black border */
+    border-radius: 5px; /* Rounded corners for buttons */
+  }
+
+  .btn-primary:hover {
+    background-color: #444444; /* Dark grey on hover */
+    border-color: #444444; /* Dark grey border on hover */
+  }
+
+  .img-fluid {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 10px;
+  }
+</style>
 {% endblock %}
