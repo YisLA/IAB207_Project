@@ -7,33 +7,32 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
-	#password is never stored in the DB, an encrypted password is stored
-	# the storage should be at least 255 chars long
+    # password is never stored in the DB, an encrypted password is stored
+    # the storage should be at least 255 chars long
     password_hash = db.Column(db.String(255), nullable=False)
-    # relation to call user.comments and comment.name
+    # relation to call user.comments and comment.user
     comments = db.relationship('Comment', backref='user')
 
     # string print method
     def __repr__(self):
         return f"Name: {self.name}"
 
-class Destination(db.Model):
-    __tablename__ = 'destinations'
+class Event(db.Model):
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
-    date = db.Column(db.Date)  
+    date = db.Column(db.Date)
     time = db.Column(db.Time)
     venue = db.Column(db.String(100))
     ticket_price = db.Column(db.String(20))
     ticket_quantity = db.Column(db.Integer)
     status = db.Column(db.String(20))
-    # ... Create the Comments db.relationship
-	# relation to call destination.comments and comment.destination
-    comments = db.relationship('Comment', backref='destination')
+    # relation to call event.comments and comment.event
+    comments = db.relationship('Comment', backref='event')
 
-	# string print method
+    # string print method
     def __repr__(self):
         return f"Name: {self.name}"
 
@@ -44,7 +43,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     # add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
     # string print method
     def __repr__(self):
@@ -52,11 +51,12 @@ class Comment(db.Model):
 
 class Booking(db.Model):
     __tablename__ = 'bookings'
-    id=db.Column(db.Integer, primary_key=True, unique=True)
-    orderid=db.Column(db.Integer, unique=True)
-    userid =db.Column(db.String(100), db.ForeignKey('users.id'))
-    destination_id = db.Column(db.Integer, db.ForeignKey('destinations.id'))
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    orderid = db.Column(db.Integer, unique=True)
+    userid = db.Column(db.String(100), db.ForeignKey('users.id'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
     # string print method
     def __repr__(self):
         return f"Booking: {self.text}"
+

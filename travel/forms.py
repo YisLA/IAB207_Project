@@ -5,8 +5,8 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'png', 'jpg', 'jpeg'}
 
-#Create new destination
-class DestinationForm(FlaskForm):
+# Create new event
+class EventForm(FlaskForm):
     name = StringField('Title', validators=[InputRequired()])
     images = FileField('Event Image', validators=[
         FileRequired(message='Image cannot be empty'),
@@ -21,26 +21,26 @@ class DestinationForm(FlaskForm):
     status_list = ['Open', 'SoldOut', 'Inactive', 'Cancelled']
     status = SelectField('Status', choices=status_list, default=1)
     submit = SubmitField('Create Event')
-    
-#User login
+
+# User login
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired('Enter user name')])
     password = PasswordField("Password", validators=[InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
-#User register
+# User register
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
     
-    #linking two fields - password should be equal to data entered in confirm
+    # linking two fields - password should be equal to data entered in confirm
     password = PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
-    #submit button
+    # submit button
     submit = SubmitField("Register")
 
-#User comment
+# User comment
 class CommentForm(FlaskForm):
   text = TextAreaField('Comment', [InputRequired()])
   submit = SubmitField('Create')
