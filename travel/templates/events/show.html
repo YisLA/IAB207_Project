@@ -159,18 +159,54 @@
                 </div>
                 <h5>{{ event.date }}</h5>
                 <div style="padding: 60px;"></div>
-                <div style="color: black;" class="container-box1">
-                  <div class="input-group1 mb-3">
-                      <span class="input-group-text1">Tickets:</span>
-                      <input type="number" class="form-control1" id="ticketInput1" value="1" min="1">
-                  </div>
-                  <div style="color: red;">
-                    <p>${{ event.ticket_price }}</p>
-                  </div>
-                  <button style="border-color: black; color: white; background-color: black;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Get Tickets
-                  </button>
+                <div style="color: white;" class="container-box1">
+                  <form method="POST" action="{{ url_for('main.book_event', event_id=event.id) }}">
+                    <div class="row mb-3 align-items-center">
+                      <div class="col text-start">
+                        <label for="ticketInput1" class="form-label">Tickets:</label>
+                        <input type="number" id="ticketInput1" class="form-control" name="number_of_tickets" value="1" min="1">
+                      </div>
+                      <div class="col text-center">
+                        <div style="color: red;">
+                          <p>${{ event.ticket_price }}</p>
+                        </div>
+                      </div>
+                      <div class="col text-end">
+                        <button style=" border-color: black; color: white; background-color: black;" type="submit" class="btn btn-primary">
+                          GetTickets
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
+              </div>
+              
+              <style>
+                .container-box1 {
+                  background-color: white;
+                  padding: 20px;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  margin-top: 20px;
+                }
+                .form-label {
+                  margin-bottom: 0.5rem;
+                  font-weight: bold;
+                }
+                .form-control {
+                  width: 100%;
+                  display: inline-block;
+                  border-radius: 4px;
+                  padding: 10px;
+                  border: 1px solid #ced4da;
+                }
+                .btn-primary {
+                  padding: 5px 50px;
+                }
+              </style>
+              
+        
+                
                 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
