@@ -3,17 +3,14 @@ from datetime import datetime
 from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users' # good practice to specify table name
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
-    # password is never stored in the DB, an encrypted password is stored
-    # the storage should be at least 255 chars long
     password_hash = db.Column(db.String(255), nullable=False)
-    # relation to call user.comments and comment.user
     comments = db.relationship('Comment', backref='user')
+    bookings = db.relationship('Booking', backref='user')
 
-    # string print method
     def __repr__(self):
         return f"Name: {self.name}"
 
@@ -29,10 +26,9 @@ class Event(db.Model):
     ticket_price = db.Column(db.String(20))
     ticket_quantity = db.Column(db.Integer)
     status = db.Column(db.String(20))
-    # relation to call event.comments and comment.event
     comments = db.relationship('Comment', backref='event')
+    bookings = db.relationship('Booking', backref='event')
 
-    # string print method
     def __repr__(self):
         return f"Name: {self.name}"
 
@@ -41,11 +37,9 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(400))
     created_at = db.Column(db.DateTime, default=datetime.now())
-    # add the foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
-    # string print method
     def __repr__(self):
         return f"Comment: {self.text}"
 
@@ -55,8 +49,8 @@ class Booking(db.Model):
     orderid = db.Column(db.Integer, unique=True)
     userid = db.Column(db.String(100), db.ForeignKey('users.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    number_of_tickets = db.Column(db.Integer, nullable=False)
+    booking_date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # string print method
     def __repr__(self):
-        return f"Booking: {self.text}"
-
+        return f"Booking: {self.orderid}"
