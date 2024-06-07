@@ -44,3 +44,9 @@ class RegisterForm(FlaskForm):
 class CommentForm(FlaskForm):
   text = TextAreaField('Comment', [InputRequired()])
   submit = SubmitField('Create')
+
+#Booking Form
+class BookingForm(FlaskForm):
+    booked_events = StringField("Booked Events", validators=[InputRequired()])
+    ticketQuantity = IntegerField('Ticket Quantity', [InputRequired()])
+    submit = SubmitField('Book Event')
