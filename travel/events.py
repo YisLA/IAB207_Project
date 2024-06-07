@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
+import random
+from flask import Blueprint, render_template, request, redirect, url_for, flash, abort, session
 from .models import Event, Comment
-from .forms import EventForm, CommentForm
+from .forms import EventForm, CommentForm, BookingForm
 from . import db
 import os
 from werkzeug.utils import secure_filename
@@ -88,3 +89,17 @@ def comment(id):
       # print('Your comment has been added', 'success') 
     # using redirect sends a GET request to event.show
     return redirect(url_for('event.show', id=id))
+
+#Booking
+@eventbp.route('/event_details/<event_id>/book', methods=['GET', 'POST'])
+def book(event_id):
+    book = BookingForm()
+    event = event.query.get_or_404(event_id)
+    email_id = session.get('emailid', None)
+
+    if book.validate_on_submit():
+            
+        book = Event
+        event = random.randint(0, 10000000000000)
+        
+    return render_template('book.html', userid= email_id, event=event, form=book)
