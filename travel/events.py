@@ -102,4 +102,4 @@ def book(event_id):
         book = Event
         event = random.randint(0, 10000000000000)
         
-    return render_template('book.html', userid= email_id, event=event, form=book)
+    return render_template('booking.html', userid= email_id, event=event, form=book)
